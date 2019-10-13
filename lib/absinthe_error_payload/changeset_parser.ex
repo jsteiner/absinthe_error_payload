@@ -96,7 +96,8 @@ defmodule AbsintheErrorPayload.ChangesetParser do
   end
 
   defp tidy_opts(opts) do
-    Keyword.drop(opts, [:validation, :max, :is, :min, :code])
+    opts
+    |> Enum.map(fn ({key, value}) -> %{key: key, value: value} end)
   end
 
   @doc """
